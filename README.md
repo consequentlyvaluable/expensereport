@@ -1,6 +1,6 @@
 # Expense Report HQ
 
-A multi-tenant SaaS starter template for tracking expense reports. The application uses Supabase for authentication, row-level-security backed multitenancy, and persistence. The UI is a Vite + React front-end that interacts directly with Supabase.
+A multi-tenant SaaS app for tracking expense reports. The application uses Supabase for authentication, row-level-security backed multitenancy, and persistence. The UI is a Vite + React front-end that interacts directly with Supabase.
 
 ## Getting started
 
