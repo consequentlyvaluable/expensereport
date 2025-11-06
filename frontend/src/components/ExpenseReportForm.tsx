@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../supabaseClient';
+import { getSupabaseClient } from '../supabaseClient';
 import type { Organization } from './OrganizationManager';
 
 interface ExpenseReportFormProps {
@@ -8,6 +8,8 @@ interface ExpenseReportFormProps {
 }
 
 export default function ExpenseReportForm({ organization, onCreated }: ExpenseReportFormProps) {
+  const supabase = getSupabaseClient();
+
   const [title, setTitle] = useState('');
   const [submittedAt, setSubmittedAt] = useState<string>(() => new Date().toISOString().slice(0, 10));
   const [amount, setAmount] = useState<number>(0);
