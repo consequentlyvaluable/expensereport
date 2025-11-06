@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
-import { supabase } from '../supabaseClient';
+import { getSupabaseClient } from '../supabaseClient';
 
 interface AuthGateProps {
   onSession: (session: Session) => void;
 }
 
 export default function AuthGate({ onSession }: AuthGateProps) {
+  const supabase = getSupabaseClient();
+
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);

@@ -4,9 +4,16 @@ import AuthGate from './components/AuthGate';
 import OrganizationManager, { type Organization } from './components/OrganizationManager';
 import ExpenseReportForm from './components/ExpenseReportForm';
 import ExpenseReportList from './components/ExpenseReportList';
-import { supabase } from './supabaseClient';
+import MissingSupabaseConfig from './components/MissingSupabaseConfig';
+import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient';
 
 export default function App() {
+  if (!isSupabaseConfigured) {
+    return <MissingSupabaseConfig />;
+  }
+
+  const supabase = getSupabaseClient();
+
   const [session, setSession] = useState<Session | null>(null);
   const [activeOrganization, setActiveOrganization] = useState<Organization | null>(null);
   const [refreshToken, setRefreshToken] = useState(0);

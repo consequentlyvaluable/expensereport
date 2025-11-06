@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
-import { supabase } from '../supabaseClient';
+import { getSupabaseClient } from '../supabaseClient';
 
 export interface Organization {
   id: string;
@@ -15,6 +15,8 @@ interface OrganizationManagerProps {
 }
 
 export default function OrganizationManager({ user, onOrganizationChange }: OrganizationManagerProps) {
+  const supabase = getSupabaseClient();
+
   const [organizations, setOrganizations] = useState<Organization[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [creating, setCreating] = useState(false);

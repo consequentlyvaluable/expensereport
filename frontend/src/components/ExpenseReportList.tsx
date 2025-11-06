@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { PostgrestResponse } from '@supabase/supabase-js';
-import { supabase } from '../supabaseClient';
+import { getSupabaseClient } from '../supabaseClient';
 import type { Organization } from './OrganizationManager';
 
 export interface ExpenseReportRow {
@@ -19,6 +19,8 @@ interface ExpenseReportListProps {
 }
 
 export default function ExpenseReportList({ organization, refreshToken }: ExpenseReportListProps) {
+  const supabase = getSupabaseClient();
+
   const [reports, setReports] = useState<ExpenseReportRow[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
